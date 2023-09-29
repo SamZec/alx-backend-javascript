@@ -1,7 +1,7 @@
-import ClassRoom from './0-classroom.js';
+import ClassRoom from "./0-classroom";
 
 export default function initializeRooms() {
-  let array = [];
+  const array = [];
   const sizes = [19, 20, 34];
 
   for (const item of sizes) {
