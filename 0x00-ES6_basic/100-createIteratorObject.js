@@ -1,6 +1,6 @@
 class Iteration {
-  constructor(list) {
-    this.array = Object.values(list);
+  constructor(employees) {
+    this.array = Object.values(employees);
   }
   *[Symbol.iterator]() {
     let index = 0;
@@ -20,7 +20,7 @@ class Iteration {
 }
 
 export default function createIteratorObject(report) {
-  const rep = report.allEmployees;
-  const inst = new Iteration(rep);
-  return inst;
+  const employees = report.allEmployees;
+  const employee = new Iteration(employees);
+  return employee;
 }
