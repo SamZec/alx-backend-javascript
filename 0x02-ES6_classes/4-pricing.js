@@ -1,6 +1,4 @@
 import Currency from './3-currency';
-const money = new Currency('$', 'Dollar');
-export default money;
 
 export default class Pricing {
   constructor(amount, currency) {
