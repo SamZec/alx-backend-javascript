@@ -2,8 +2,8 @@ export default function getFullResponseFromAPI(success) {
   const promise = new Promise((resolve, reject) => {
     if (success === true) {
       const object = {
-        'status': 200,
-	 body: 'Success'
+        status: 200,
+        body: 'Success',
       };
       resolve(object);
     } else {
@@ -11,7 +11,6 @@ export default function getFullResponseFromAPI(success) {
     }
   });
   promise.then((value) => value,
-    (error) => error
-  );
+    (error) => error);
   return promise;
 }
