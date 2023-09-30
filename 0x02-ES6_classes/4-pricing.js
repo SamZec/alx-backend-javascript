@@ -1,5 +1,4 @@
 import Currency from './3-currency';
-Currency_ctx
 
 export default class Pricing {
   constructor(amount, currency) {
