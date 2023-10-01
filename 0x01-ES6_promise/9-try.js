@@ -1,5 +1,5 @@
 export default function guardrail(mathFunction) {
-  let array = [];
+  const array = [];
   try {
     const res = mathFunction();
     array.push(res);
