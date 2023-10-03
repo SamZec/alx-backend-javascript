@@ -1,4 +1,5 @@
-export default function updateStudentGradeByCity(getListStudents, city, newGrades) {
+export default function updateStudentGradeByCity(
+  getListStudents, city, newGrades) {
   let array = getListStudents.map(function (student) {
     newGrades.filter(function (grades) {
       if (grades.studentId === student.id) {
