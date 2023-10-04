@@ -4,9 +4,11 @@ export default function cleanSet(set, startString) {
     return string;
   }
   set.forEach((value) => {
-    if (value.match(startString)) {
-      string += value.slice(startString.length, (value.length + 1));
-      string += '-';
+    if (value !== undefined) {
+      if (value.match(startString)) {
+        string += value.slice(startString.length, (value.length + 1));
+        string += '-';
+      }
     }
   });
   return string.slice(0, -1);
