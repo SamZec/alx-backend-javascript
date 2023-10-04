@@ -1,6 +1,7 @@
 export default function getListStudentIds(getListStudents) {
+  let ids = []
   if (getListStudents.constructor === Array) {
-    return getListStudents.map((object) => object.id);
+    ids = getListStudents.map((object) => object.id);
   }
-  return new Array();
+  return ids;
 }
