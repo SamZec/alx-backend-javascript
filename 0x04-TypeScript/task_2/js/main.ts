@@ -69,3 +69,20 @@ function executeWork(employee: any) {
 executeWork(createEmployee(200));
 
 executeWork(createEmployee(1000));
+
+type Subjects = 'Math' | 'History';
+
+function teachClass(todayClass: Subjects) {
+  if (todayClass === 'Math') {
+    console.log('Teaching Math');
+    return 'Teaching Math';
+  }
+
+  if (todayClass === 'History') {
+    console.log('Teaching History');
+    return 'Teaching History';
+  }
+}
+
+teachClass('Math');
+teachClass('History');
