@@ -24,4 +24,4 @@ module.exports = function countStudents(path) {
   console.log(`Number of students: ${num}`);
   console.log(`Number of students in CS: ${obj.CS.length}. List: ${obj.CS}`);
   console.log(`Number of students in SWE: ${obj.SWE.length}. List: ${obj.SWE}`);
-}
+};
