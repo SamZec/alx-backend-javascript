@@ -21,8 +21,11 @@ module.exports = function countStudents(path) {
       obj.SWE.push(' ' + value[0]);
     }
   }
-  const num = obj.SWE.length + obj.CS.length;
-  console.log(`Number of students: ${num}`);
-  console.log(`Number of students in CS: ${obj.CS.length}. List: ${obj.CS}`);
-  console.log(`Number of students in SWE: ${obj.SWE.length}. List: ${obj.SWE}`);
+  const SWE = obj.SWE.length;
+  const CS = obj.CS.length;
+  const total = SWE + CS;
+
+  console.log(`Number of students: ${total}`);
+  console.log(`Number of students in CS: ${CS}. List: ${obj.CS}`);
+  console.log(`Number of students in SWE: ${SWE}. List: ${obj.SWE}`);
 };
