@@ -1,4 +1,5 @@
 console.log('Welcome to Holberton School, what is your name?');
+
 process.stdin.on('readable', function () {
   const data = process.stdin.read();
   if (data !== null) {
@@ -7,5 +8,5 @@ process.stdin.on('readable', function () {
 });
 
 process.stdin.on('end', function () {
-  process.stdout.write('This important software is now closing\n');
+  process.stdout.write('This important software is now closing' + '\n');
 });
