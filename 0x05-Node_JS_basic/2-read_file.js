@@ -1,31 +1,25 @@
 const fs = require('fs');
 
-module.exports = function countStudents(path) {
-  let data = '';
+function countStudents(path) {
   try {
-    data = fs.readFileSync(path, 'utf8');
+    const data = fs.readFileSync(path, 'utf8');
+    const result = [];
+    data.split('\n').slice(0, -1).forEach((data) => {
+      result.push(data.split(','));
+    });
+    result.shift();
+    const newis = [];
+    result.forEach((data) => newis.push([data[0], data[3]]));
+    const fields = new Set();
+    newis.forEach((item) => fields.add(item[1]));
+    const final = {};
+    fields.forEach((data) => { (final[data] = 0); });
+    newis.forEach((data) => { (final[data[1]] += 1); });
+    console.log(`Number of students: ${result.filter((check) => check.length > 3).length}`);
+    Object.keys(final).forEach((data) => console.log(`Number of students in ${data}: ${final[data]}. List: ${newis.filter((n) => n[1] === data).map((n) => n[0]).join(', ')}`));
+  } catch (E) {
+    throw Error('Cannot load the database');
   }
-  catch(err) {
-    err.message = 'Cannot load the database';
-    throw new Error('Cannot load the database');
-  }
-  const line = data.split('\n');
-  const list = line.slice();
-  const obj = {CS: [], SWE: []};
-  for (let data of list) {
-    if (data.includes('CS')) {
-      const value = data.split(',').slice(0);
-      obj.CS.push(' ' + value[0]);
-    } else if (data.includes('SWE')) {
-      const value = data.split(',').slice(0);
-      obj.SWE.push(' ' + value[0]);
-    }
-  }
-  const SWE = obj.SWE.length;
-  const CS = obj.CS.length;
-  const total = SWE + CS;
+}
 
-  console.log(`Number of students: ${total}`);
-  console.log(`Number of students in CS: ${CS}. List: ${obj.CS}`);
-  console.log(`Number of students in SWE: ${SWE}. List: ${obj.SWE}`);
-};
+module.exports = countStudents;
