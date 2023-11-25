@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const { it, describe } = require('mocha');
 
 const Utils = require('./utils.js');
-const sendPaymentRequestToApi = require('./3-payment.js');
+const sendPaymentRequestToApi = require('./4-payment.js');
 
 describe('', () => {
   it('checking if numbers round with spies', () => {
