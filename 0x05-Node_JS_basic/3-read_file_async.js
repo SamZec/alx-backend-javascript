@@ -1,36 +1,31 @@
 const fs = require('fs');
-const util = require('util');
 
-const readFile = util.promisify(fs.readFile);
+async function countStudents(path) {
+  if (fs.existsSync(path)) {
+    return new Promise((resolve) => {
+      fs.readFile(path, 'utf8', (err, data) => {
+        if (err) {
+          throw Error('Cannot load the database');
+        }
+        const result = [];
+        data.split('\n').slice(0, -1).forEach((data) => {
+          result.push(data.split(','));
+        });
+        result.shift();
+        const newis = [];
+        result.forEach((data) => newis.push([data[0], data[3]]));
+        const fields = new Set();
+        newis.forEach((item) => fields.add(item[1]));
+        const final = {};
+        fields.forEach((data) => { (final[data] = 0); });
+        newis.forEach((data) => { (final[data[1]] += 1); });
+        console.log(`Number of students: ${result.filter((check) => check.length > 3).length}`);
+        Object.keys(final).forEach((data) => console.log(`Number of students in ${data}: ${final[data]}. List: ${newis.filter((n) => n[1] === data).map((n) => n[0]).join(', ')}`));
+        resolve(result, final, newis);
+      });
+    });
+  }
+  throw Error('Cannot load the database');
+}
 
-module.exports = function countStudents(path) {
-  let data = '';
-  try {
-    data = readFile(path, 'utf8');
-  }
-  catch(err) {
-    err.message = 'Cannot load the database';
-    throw new Error('Cannot load the database');
-  }
-  data.then((items) => {
-    const line = items.split('\n');
-    const list = line.slice();
-    const obj = {CS: [], SWE: []};
-    for (let li of list) {
-      if (li.includes('CS')) {
-        const value = li.split(',').slice(0);
-        obj.CS.push(' ' + value[0]);
-      } else if (li.includes('SWE')) {
-        const value = li.split(',').slice(0);
-        obj.SWE.push(' ' + value[0]);
-      }
-    }
-    const SWE = obj.SWE.length;
-    const SC = obj.CS.length;
-    const total = SWE + SC;
-    console.log(`Number of students: ${total}`);
-    console.log(`Number of students in CS: ${SC}. List: ${obj.CS}`);
-    console.log(`Number of students in SWE: ${SWE}. List: ${obj.SWE}`);
-  });
-  return data;
-};
+module.exports = countStudents;
