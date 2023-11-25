@@ -19,7 +19,8 @@ describe('sendPaymentRequestToAPI Test', () => {
 
     expect(consoleSpy.calledWith('The total is: 120')).to.be.true;
     expect(consoleSpy.calledOnce).to.be.true;
-
+  });
+  it('logs to the console the right messages', () => {
     sendPaymentRequestToAPI(10, 10);
 
     expect(consoleSpy.calledWith('The total is: 20')).to.be.true;
