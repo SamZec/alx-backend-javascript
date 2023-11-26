@@ -16,6 +16,8 @@ describe.only('getPaymentTokenFromAPI test', function () {
   });
 
   it('checks unuccessful response from the API', function () {
-    expect(getPaymentTokenFromAPI(false)).to.equal(undefined);
+    getPaymentTokenFromAPI(false).then((value) => {
+      expect(value).to.equal('');
+    });
   });
 });
