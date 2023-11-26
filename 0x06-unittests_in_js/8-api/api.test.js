@@ -7,7 +7,7 @@ describe('index page', function () {
       expect(res.statusCode).to.be.equal(200);
     });
   });
-  it('checks correct API response', function () {
+  it('GET / gives correct API response', function () {
     request('http://localhost:7865', (err, res, body) => {
       expect(body).to.be.equal('Welcome to the payment system');
     });
